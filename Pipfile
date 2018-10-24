@@ -12,6 +12,8 @@ firebase-admin = "*"
 
 [dev-packages]
 
+pylint = "*"
+pylint-django = "*"
 
 
 [requires]

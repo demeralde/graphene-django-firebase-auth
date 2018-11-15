@@ -8,6 +8,8 @@ name = "pypi"
 [packages]
 
 firebase-admin = "*"
+django = "*"
+django-environ = "*"
 
 
 [dev-packages]

@@ -4,8 +4,9 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 
 from firebase_auth.authentication import FirebaseAuthentication
-from firebase_auth.tests.helpers import (
-    create_user, mock_firebase_uid, mock_token, mock_verify_id_token,
+from .helpers import (
+    create_user, mock_firebase_uid, mock_firebase_token,
+    mock_firebase_verify_id_token,
 )
 
 
@@ -26,17 +27,23 @@ class FirebaseAuthenticationTests(TestCase):
 
     @mock.patch(
         'firebase_admin.auth.verify_id_token',
-        side_effect=mock_verify_id_token)
+        side_effect=mock_firebase_verify_id_token,
+    )
     def test_authenticate_with_valid_token_and_no_user_fails(self, mock_instance):
-        request = self.request_factory.get('/', HTTP_AUTHORIZATION=mock_token)
+        request = self.request_factory.get(
+            '/', HTTP_AUTHORIZATION=mock_firebase_token,
+        )
         user = FirebaseAuthentication().authenticate(request)
         assert user is None
 
     @mock.patch(
         'firebase_admin.auth.verify_id_token',
-        side_effect=mock_verify_id_token)
+        side_effect=mock_firebase_verify_id_token,
+    )
     def test_authenticate_with_valid_token_and_user_passes(self, mock_instance):
-        request = self.request_factory.get('/', HTTP_AUTHORIZATION=mock_token)
+        request = self.request_factory.get(
+            '/', HTTP_AUTHORIZATION=mock_firebase_token,
+        )
         expected_user = create_user(firebase_uid=mock_firebase_uid)
         authenticated_user = FirebaseAuthentication().authenticate(request)
         assert authenticated_user == expected_user

@@ -1,13 +1,10 @@
-import firebase_admin
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from firebase_admin import auth
 
+from firebase_auth.apps import firebase_app
+
 
 User = get_user_model()
-
-credentials = firebase_admin.credentials.Certificate(settings.FIREBASE_KEY_FILE)
-app = firebase_admin.initialize_app(credentials)
 
 
 class FirebaseAuthentication:
@@ -16,7 +13,7 @@ class FirebaseAuthentication:
         encoded_token = request.META.get('HTTP_AUTHORIZATION')
 
         try:
-            decoded_token = auth.verify_id_token(encoded_token, app)
+            decoded_token = auth.verify_id_token(encoded_token, firebase_app)
         except Exception:
             return None
 

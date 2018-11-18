@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'firebase_auth.apps.AuthConfig',
+    'firebase_auth.apps.FirebaseAuthConfig',
+    'package_tests.apps.PackageTestsConfig',
 ]
 
 MIDDLEWARE = [
@@ -61,7 +62,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'firebase_auth.User'
+AUTH_USER_MODEL = 'package_tests.User'
 
 AUTHENTICATION_BACKENDS = ('firebase_auth.authentication.FirebaseAuthentication',)
 

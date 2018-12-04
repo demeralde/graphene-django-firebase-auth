@@ -121,4 +121,7 @@ STATIC_URL = '/static/'
 
 # Firebase config
 
-FIREBASE_KEY_FILE = env('FIREBASE_KEY_FILE')
+GOOGLE_APPLICATION_CREDENTIALS = os.path.join(
+    BASE_DIR,
+    env('GOOGLE_APPLICATION_CREDENTIALS'),
+)

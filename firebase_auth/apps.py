@@ -11,7 +11,7 @@ class FirebaseAuthConfig(AppConfig):
 
     def ready(self):
         credentials = firebase_admin.credentials.Certificate(
-            settings.FIREBASE_KEY_FILE,
+            settings.GOOGLE_APPLICATION_CREDENTIALS,
         )
         global firebase_app
         firebase_app = firebase_admin.initialize_app(credentials)

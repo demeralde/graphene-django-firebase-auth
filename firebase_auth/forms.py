@@ -18,8 +18,12 @@ class UserRegistrationForm(forms.ModelForm):
 
         try:
             # Ensure the specified user exists in Firebase
-            auth.get_user(firebase_uid)
+            user = auth.get_user(firebase_uid)
+            self.data['email'] = user.email
+            self.data['username'] = user.display_name
         except auth.AuthError:
+            raise forms.ValidationError('The firebase_uid is invalid.')
+        except ValueError:
             raise forms.ValidationError('The firebase_uid is invalid.')
 
         return firebase_uid

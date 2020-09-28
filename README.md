@@ -4,9 +4,6 @@ Authentication provider for graphene-django and Firebase's Authentication servic
 
 Note this is a WIP and abandoned project since I never ended up using Firebase. But the code is still a good starting point as of writing this.
 
-**This package is still in development and is not ready for
-production.**
-
 Partially inspired by
 [django-firebase-auth](https://github.com/fcornelius/django-firebase-auth)
 for Django REST framework.

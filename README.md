@@ -2,7 +2,7 @@
 
 Authentication provider for graphene-django and Firebase's Authentication service.
 
-Note this is a WIP and abandoned project since I never ended up using Firebase. But the code is still a good starting point as of writing this.
+Note this is a WIP and abandoned project since I never ended up using Firebase. But the code is still a good starting point as of writing this. I have also been notified of new security vulnerabilities since I wrote it (probably in an old dependency), so you'll need to fix this.
 
 Partially inspired by
 [django-firebase-auth](https://github.com/fcornelius/django-firebase-auth)
